@@ -1,9 +1,10 @@
 <resources>
-    <string name="app_name">Check\'it</string>
+    //modifier le nom pour simplement "Check\'it"
+    <string name="app_name">aaCheck\'it</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_title">Check\'it</string>
+    <string name="nav_header_subtitle">Do what you need to want to do</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
