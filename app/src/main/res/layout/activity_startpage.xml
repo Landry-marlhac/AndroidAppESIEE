@@ -6,14 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".Startpage"
     android:background="@color/orange_checkit"
-    >
+    android:theme="@style/Theme.Design.NoActionBar">
+
 
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="95dp"
         android:layout_height="216dp"
         android:src="@drawable/checkbox"
-        android:theme="@style/Theme.AndroidAppESIEE.NoActionBar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

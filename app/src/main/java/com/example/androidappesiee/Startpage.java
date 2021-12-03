@@ -16,20 +16,16 @@ public class Startpage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Window window = getWindow();
         window.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_startpage);
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent i = new Intent(Startpage.this, MainActivity.class);
-                startActivity(i);
-                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-                finish();
+        new Handler().postDelayed(() -> {
+            Intent i = new Intent(Startpage.this, MainActivity.class);
+            startActivity(i);
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            finish();
 
-            }
-        }, 2000);
-
-
+        }, 1500);
 
     }
 
