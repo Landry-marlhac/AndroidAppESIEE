@@ -11,5 +11,8 @@
     <string name="menu_home">Check\'it Today</string>
     <string name="menu_gallery">Check\'it Week</string>
     <string name="menu_slideshow">More about Check\'it</string>
+    <string name="title_activity_startscreen">Startscreen</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 
 </resources>
