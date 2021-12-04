@@ -1,19 +1,23 @@
 package com.example.androidappesiee;
 
-import java.text.DateFormat;
-import java.util.Calendar;
-import java.util.Date;
-
 public class ToDoTacheModel {
 
     private int ID ;
     private String nomTache;
     private String description;
     private String typeDeTache;
-    private Calendar deadline = Calendar.getInstance();
-    private String repetition;
     private int priorite;
     private Boolean effectuee;
+
+    public ToDoTacheModel(int ID, String nomTache, String description, String typeDeTache, int priorite, Boolean effectuee) {
+        this.ID = ID;
+        this.nomTache = nomTache;
+        this.description = description;
+        this.typeDeTache = typeDeTache;
+        this.priorite = priorite;
+        this.effectuee = effectuee;
+    }
+
 
     //ToString method pour affichier plus lisiblement les informations contenues dans une tache
 
@@ -24,8 +28,6 @@ public class ToDoTacheModel {
                 ", nomTache='" + nomTache + '\'' +
                 ", description='" + description + '\'' +
                 ", typeDeTache='" + typeDeTache + '\'' +
-                ", deadline=" + deadline +
-                ", repetition='" + repetition + '\'' +
                 ", priorite=" + priorite +
                 ", effectuee=" + effectuee +
                 '}';
@@ -33,6 +35,7 @@ public class ToDoTacheModel {
 
 
     //Getter and setter
+
 
     public int getID() {
         return ID;
@@ -64,16 +67,6 @@ public class ToDoTacheModel {
 
     public void setTypeDeTache(String typeDeTache) {
         this.typeDeTache = typeDeTache;
-    }
-
-
-
-    public String getRepetition() {
-        return repetition;
-    }
-
-    public void setRepetition(String repetition) {
-        this.repetition = repetition;
     }
 
     public int getPriorite() {
