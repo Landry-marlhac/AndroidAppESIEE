@@ -3,6 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Camille Picard/AndroidStudioProjects/Esiee/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.225" />
+        <entry key="..\:/Users/Camille Picard/AndroidStudioProjects/Esiee/app/src/main/res/drawable/side_nav_bar.xml" value="0.225" />
+        <entry key="..\:/Users/Camille Picard/AndroidStudioProjects/Esiee/app/src/main/res/drawable/task_bar.xml" value="0.3880208333333333" />
+        <entry key="..\:/Users/Camille Picard/AndroidStudioProjects/Esiee/app/src/main/res/layout/activity_new_task.xml" value="0.2957427536231884" />
+        <entry key="..\:/Users/Camille Picard/AndroidStudioProjects/Esiee/app/src/main/res/layout/activity_startpage.xml" value="0.2957427536231884" />
+        <entry key="..\:/Users/Camille Picard/AndroidStudioProjects/Esiee/app/src/main/res/layout/task_layout.xml" value="0.2957427536231884" />
         <entry key="..\:/Users/Guillaume_94174/AndroidStudioProjects/AndroidAppESIEE/app/src/main/res/menu/activity_main_drawer.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/Guillaume_94174/AndroidStudioProjects/AndroidAppESIEE/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.13541666666666666" />
         <entry key="..\:/Users/camil/AndroidStudioProjects/Check'it/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2703125" />

@@ -21,8 +21,7 @@ public class NewTask extends AppCompatActivity {
         mimportant = findViewById(R.id.importance2);
         mtresimportant = findViewById(R.id.importance3);
 
-
-
+        
     }
 
 }

@@ -1,5 +1,5 @@
 package com.example.androidappesiee;
-//test de modif
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +14,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.androidappesiee.databinding.ActivityMainBinding;
 
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        //Appel de l'activity NewTask quand bouton appuyé
         setSupportActionBar(binding.appBarMain.toolbar);
         binding.appBarMain.button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
     }
-//commentaire en plus
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
