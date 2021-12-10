@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -21,6 +22,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_TACHE_PRIORITE = "TACHE_PRIORITE";
     public static final String COLUMN_TACHE_EFFECTUEE = "TACHE_EFFECTUEE";
     public static final String COLUMN_ID = "ID";
+    private Context context;
 
     public DataBaseHelper(@Nullable Context context) {
         super(context, "tachesToDo.db", null, 1);
@@ -36,19 +38,22 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        db.execSQL("DROP TABLE IF EXISTS " + TACHES_TABLE);
+        onCreate(db);
     }
 
-    public boolean addOne (ToDoTacheModel tacheModel){
+    public boolean addOne (String nomtache, String description, String typedetache, int priorite){
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
-        cv.put(COLUMN_TACHE_NAME, tacheModel.getNomTache());
-        cv.put(COLUMN_TACHE_DESCRIPTION, tacheModel.getDescription());
-        cv.put(COLUMN_TACHE_TYPEDETACHE, tacheModel.getTypeDeTache());
-        cv.put(COLUMN_TACHE_PRIORITE, tacheModel.getPriorite());
-        cv.put(COLUMN_TACHE_EFFECTUEE, tacheModel.getEffectuee());
+        boolean iseffectuee = new Boolean(false);
+
+        cv.put(COLUMN_TACHE_NAME, nomtache);
+        cv.put(COLUMN_TACHE_DESCRIPTION, description);
+        cv.put(COLUMN_TACHE_TYPEDETACHE, typedetache);
+        cv.put(COLUMN_TACHE_PRIORITE, priorite);
+        cv.put(COLUMN_TACHE_EFFECTUEE, iseffectuee);
 
         long insert = db.insert(TACHES_TABLE, null, cv);
 
@@ -108,8 +113,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return returnList;
 
     }
-
-
 
 
 

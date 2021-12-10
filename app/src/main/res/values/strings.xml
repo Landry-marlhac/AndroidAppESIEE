@@ -15,4 +15,12 @@
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
 
+    <string-array name="type_tache_liste">
+        <item>Sport</item>
+        <item>Travail</item>
+        <item>Devoirs</item>
+        <item>Everyday life</item>
+        <item>courses</item>
+    </string-array>
+
 </resources>
