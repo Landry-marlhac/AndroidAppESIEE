@@ -14,15 +14,13 @@
         android:padding="8dp">
 
         <CheckBox
-            android:id="@+id/taskbar"
+            android:id="@+id/Effectuee"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:buttonTint="@color/orange_checkit"
             android:checked="false"
             android:paddingStart="8dp" />
-
-
 
     </RelativeLayout>
 
