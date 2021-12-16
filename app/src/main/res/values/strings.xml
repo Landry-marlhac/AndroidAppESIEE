@@ -9,8 +9,8 @@
     <string name="action_settings">Settings</string>
 
     <string name="menu_home">Check\'it Today</string>
-    <string name="menu_gallery">Check\'it Week</string>
-    <string name="menu_slideshow">More about Check\'it</string>
+    <string name="menu_gallery">Check\'it Fast</string>
+    <string name="menu_slideshow">More about Check\'it team !</string>
     <string name="title_activity_startscreen">Startscreen</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
