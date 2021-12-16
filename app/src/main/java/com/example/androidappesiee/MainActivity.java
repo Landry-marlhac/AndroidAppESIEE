@@ -1,38 +1,36 @@
 package com.example.androidappesiee;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
-import android.view.View;
 import android.view.Menu;
+import android.view.View;
 import android.widget.Toast;
 
-import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.navigation.NavigationView;
-
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.androidappesiee.databinding.ActivityMainBinding;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
-    List<ToDoTacheModel> TachesListes = new ArrayList<ToDoTacheModel>();
 
     private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
+    CustomAdapter mCustomAdapter;
+
+    DataBaseHelper db;
+    ArrayList<String> tache_id, tache_nom, tache_description, tache_type, tache_priorite, tache_isdone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        remplitachelist();
+
 
         //Appel de l'activity NewTask quand bouton appuyé
         setSupportActionBar(binding.appBarMain.toolbar);
@@ -65,26 +63,43 @@ public class MainActivity extends AppCompatActivity {
 
         mRecyclerView = findViewById(R.id.recyclerToDoView);
 
-        mRecyclerView.setHasFixedSize(true);
-        mLayoutManager = new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(mLayoutManager);
+        db = new DataBaseHelper(MainActivity.this);
+        tache_id = new ArrayList<>();
+        tache_nom = new ArrayList<>();
+        tache_description = new ArrayList<>();
+        tache_type = new ArrayList<>();
+        tache_priorite = new ArrayList<>();
+        tache_isdone = new ArrayList<>();
 
-        mAdapter = new RecycleViewAdapter(TachesListes, MainActivity.this) {
-        };
-        mRecyclerView.setAdapter(mAdapter);
+        storeDataInArrays();
 
+        mCustomAdapter = new CustomAdapter(MainActivity.this,
+                tache_id,
+                tache_nom,
+                tache_description,
+                tache_type,
+                tache_priorite,
+                tache_isdone);
 
+        mRecyclerView.setAdapter(mCustomAdapter);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
 
     }
 
-    private void remplitachelist() {
-
-        ToDoTacheModel tache1 = new ToDoTacheModel(0,"sport","10 pompes","Sport",0,false);
-        ToDoTacheModel tache2 = new ToDoTacheModel(1,"sport1","11 pompes","Sport",0,false);
-        ToDoTacheModel tache3 = new ToDoTacheModel(2,"sport2","12 pompes","Sport",0,false);
-
-        TachesListes.addAll(Arrays.asList(new ToDoTacheModel[]{ tache1,tache2,tache3 }));
-
+    void storeDataInArrays() {
+        Cursor cursor = db.readAllData();
+        if (cursor.getCount() == 0) {
+            Toast.makeText(MainActivity.this, "No Data in database", Toast.LENGTH_SHORT).show();
+        } else {
+            while (cursor.moveToNext()) {
+                tache_id.add(cursor.getString(0));
+                tache_nom.add(cursor.getString(1));
+                tache_description.add(cursor.getString(2));
+                tache_type.add(cursor.getString(3));
+                tache_priorite.add(cursor.getString(4));
+                tache_isdone.add(cursor.getString(5));
+            }
+        }
     }
 
     @Override
@@ -100,8 +115,9 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
-    void ToastMessage (String message){
-        Toast.makeText(MainActivity.this, ""+message, Toast.LENGTH_SHORT).show();
+
+    void ToastMessage(String message) {
+        Toast.makeText(MainActivity.this, "" + message, Toast.LENGTH_SHORT).show();
     }
 
 }

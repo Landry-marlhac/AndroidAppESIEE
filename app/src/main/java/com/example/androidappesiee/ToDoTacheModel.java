@@ -2,7 +2,7 @@ package com.example.androidappesiee;
 
 public class ToDoTacheModel {
 
-    private int ID ;
+    private int ID;
     private String nomTache;
     private String description;
     private String typeDeTache;

@@ -1,7 +1,5 @@
 package com.example.androidappesiee;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -10,7 +8,8 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class NewTask extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
@@ -45,23 +44,21 @@ public class NewTask extends AppCompatActivity implements View.OnClickListener, 
         mSpinnerTypeDeTache = (Spinner) findViewById(R.id.spinnerTypeDeTache);
 
 
-
-// Create an ArrayAdapter using the string array and a default spinner layout
+        // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.type_tache_liste, android.R.layout.simple_spinner_item);
-// Specify the layout to use when the list of choices appears
+        // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-// Apply the adapter to the spinner
+        // Apply the adapter to the spinner
         mSpinnerTypeDeTache.setAdapter(adapter);
         mSpinnerTypeDeTache.setOnItemSelectedListener(this);
 
 
-        
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
 
             case R.id.importance1:
                 mImportant.setChecked(false);
@@ -84,14 +81,9 @@ public class NewTask extends AppCompatActivity implements View.OnClickListener, 
             case R.id.btn_enregistrer:
 
                 DataBaseHelper db = new DataBaseHelper(NewTask.this);
-                boolean x = db.addOne(mNomTache.getText().toString(), mDescriptionTache.getText().toString(), typeDeTache, importance );
-
-                if(x){
-                    Toast.makeText(NewTask.this, "Insert good", Toast.LENGTH_SHORT).show();
-                }else{
-                    Toast.makeText(NewTask.this, "Insert not good", Toast.LENGTH_SHORT).show();
-                }
-
+                db.addTask(mNomTache.getText().toString().trim(),
+                        mDescriptionTache.getText().toString().trim(),
+                        typeDeTache, importance);
                 break;
 
         }
@@ -108,7 +100,6 @@ public class NewTask extends AppCompatActivity implements View.OnClickListener, 
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
-
 
 
 }
