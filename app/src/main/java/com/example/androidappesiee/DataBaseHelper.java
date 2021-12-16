@@ -9,9 +9,6 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class DataBaseHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "DatabaseTache.db";
@@ -44,7 +41,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean addTask(String nomtache, String description, String typedetache, int priorite){
+    public boolean addTask(String nomtache, String description, String typedetache, int priorite) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -58,87 +55,37 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         long insert = db.insert(TACHES_TABLE, null, cv);
 
-        if(insert == -1){
+        if (insert == -1) {
             Toast.makeText(context, "Failed to add task", Toast.LENGTH_SHORT).show();
             return false;
-        }else {
+        } else {
             Toast.makeText(context, "succeed to add task", Toast.LENGTH_SHORT).show();
             return true;
         }
     }
 
-    Cursor readAllData(){
-        String query = "SELECT * FROM "+TACHES_TABLE;
+    Cursor readAllData() {
+        String query = "SELECT * FROM " + TACHES_TABLE;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = null;
-        if(db != null){
+        if (db != null) {
             cursor = db.rawQuery(query, null);
         }
         return cursor;
     }
 
-
-
-    public Boolean deleteOne (ToDoTacheModel tacheModel){
+    public Boolean deleteOne(ToDoTacheModel tacheModel) {
         //Find customer model in the database. if in database then remove it and return true
         //if not find, return false
         SQLiteDatabase db = this.getWritableDatabase();
-        String queryString = "DELETE FROM "+TACHES_TABLE+ " WHERE "+COLUMN_ID+ " = "+tacheModel.getID();
+        String queryString = "DELETE FROM " + TACHES_TABLE + " WHERE " + COLUMN_ID + " = " + tacheModel.getID();
 
 
         Cursor cursor = db.rawQuery(queryString, null);
-        if (cursor.moveToFirst()){
+        if (cursor.moveToFirst()) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
-
-    public List<ToDoTacheModel> getEveryone(){
-
-        List<ToDoTacheModel> returnList = new ArrayList<>();
-        //Get data from database
-
-        String queryString = "SELECT * FROM "+TACHES_TABLE;
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(queryString, null);
-
-        if(cursor.moveToFirst()){
-            //Loop throught the cursor (result set) and create new customer objevt. put them in return list
-            do{
-                int tacheID = cursor.getInt(0);
-                String tacheName = cursor.getString(1);
-                String tacheDescription = cursor.getString(2);
-                String typeDeTache = cursor.getString(3);
-                int tachePriorite = cursor.getInt(4);
-                boolean tacheEffectuee = cursor.getInt(5) == 1 ? true : false ;
-
-                ToDoTacheModel newTache = new ToDoTacheModel(tacheID,tacheName,tacheDescription,typeDeTache,tachePriorite,tacheEffectuee);
-                returnList.add(newTache);
-            }while(cursor.moveToNext());
-
-        }else{
-            //Failure, do not add anything to list
-        }
-
-        //Close cursor and database
-        cursor.close();
-        db.close();
-
-        return returnList;
-
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

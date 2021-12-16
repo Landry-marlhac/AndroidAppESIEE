@@ -19,7 +19,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     private Context mContext;
 
 
-    public CustomAdapter(Context context, ArrayList tache_id,ArrayList tache_nom,
+    public CustomAdapter(Context context, ArrayList tache_id, ArrayList tache_nom,
                          ArrayList tache_description, ArrayList tache_type,
                          ArrayList tache_priorite, ArrayList tache_isdone) {
 
@@ -36,7 +36,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(mContext).inflate(R.layout.one_line_task,parent,false);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.one_line_task, parent, false);
         MyViewHolder holder = new MyViewHolder(view);
 
         return holder;

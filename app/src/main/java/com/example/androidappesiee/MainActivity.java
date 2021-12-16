@@ -20,20 +20,14 @@ import com.example.androidappesiee.databinding.ActivityMainBinding;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
-    List<ToDoTacheModel> TachesListes = new ArrayList<ToDoTacheModel>();
 
     private RecyclerView mRecyclerView;
     CustomAdapter mCustomAdapter;
-
-
-    private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
 
     DataBaseHelper db;
     ArrayList<String> tache_id, tache_nom, tache_description, tache_type, tache_priorite, tache_isdone;
@@ -90,16 +84,6 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(mCustomAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
 
-/*
-        mRecyclerView.setHasFixedSize(true);
-        mLayoutManager = new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(mLayoutManager);
-        TachesListes.getEveryone();
-        mAdapter = new CustomAdapter(TachesListes, MainActivity.this);
-        mRecyclerView.setAdapter(mAdapter);
-*/
-
-
     }
 
     void storeDataInArrays() {
@@ -117,17 +101,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-
-
-    /*private void remplitachelist() {
-
-        ToDoTacheModel tache1 = new ToDoTacheModel(0,"sport","10 pompes","Sport",0,false);
-        ToDoTacheModel tache2 = new ToDoTacheModel(1,"sport1","11 pompes","Sport",0,false);
-        ToDoTacheModel tache3 = new ToDoTacheModel(2,"sport2","12 pompes","Sport",0,false);
-
-        TachesListes.addAll(Arrays.asList(new ToDoTacheModel[]{ tache1,tache2,tache3 }));
-
-    }*/
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
