@@ -1,5 +1,6 @@
 package com.example.androidappesiee;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -84,6 +85,8 @@ public class NewTask extends AppCompatActivity implements View.OnClickListener, 
                 db.addTask(mNomTache.getText().toString().trim(),
                         mDescriptionTache.getText().toString().trim(),
                         typeDeTache, importance);
+                Intent intentcheck = new Intent(NewTask.this, CheckitToday.class);
+
                 break;
 
         }

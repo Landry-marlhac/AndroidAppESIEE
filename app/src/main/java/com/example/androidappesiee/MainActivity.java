@@ -26,11 +26,6 @@ public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
 
-    private RecyclerView mRecyclerView;
-    CustomAdapter mCustomAdapter;
-
-    DataBaseHelper db;
-    ArrayList<String> tache_id, tache_nom, tache_description, tache_type, tache_priorite, tache_isdone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,16 +34,8 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-
-        //Appel de l'activity NewTask quand bouton appuyé
         setSupportActionBar(binding.appBarMain.toolbar);
-        binding.appBarMain.button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent newtaskIntent = new Intent(MainActivity.this, NewTask.class);
-                startActivity(newtaskIntent);
-            }
-        });
+
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
         // Passing each menu ID as a set of Ids because each
@@ -60,47 +47,8 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-
-        mRecyclerView = findViewById(R.id.recyclerToDoView);
-
-        db = new DataBaseHelper(MainActivity.this);
-        tache_id = new ArrayList<>();
-        tache_nom = new ArrayList<>();
-        tache_description = new ArrayList<>();
-        tache_type = new ArrayList<>();
-        tache_priorite = new ArrayList<>();
-        tache_isdone = new ArrayList<>();
-
-        storeDataInArrays();
-
-        mCustomAdapter = new CustomAdapter(MainActivity.this,
-                tache_id,
-                tache_nom,
-                tache_description,
-                tache_type,
-                tache_priorite,
-                tache_isdone);
-
-        mRecyclerView.setAdapter(mCustomAdapter);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
-
     }
 
-    void storeDataInArrays() {
-        Cursor cursor = db.readAllData();
-        if (cursor.getCount() == 0) {
-            Toast.makeText(MainActivity.this, "No Data in database", Toast.LENGTH_SHORT).show();
-        } else {
-            while (cursor.moveToNext()) {
-                tache_id.add(cursor.getString(0));
-                tache_nom.add(cursor.getString(1));
-                tache_description.add(cursor.getString(2));
-                tache_type.add(cursor.getString(3));
-                tache_priorite.add(cursor.getString(4));
-                tache_isdone.add(cursor.getString(5));
-            }
-        }
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -89,5 +89,33 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
+        <Button
+            android:id="@+id/b1"
+            android:layout_width="114dp"
+            android:layout_height="85dp"
+            android:layout_gravity="bottom|end"
+            android:layout_marginBottom="352dp"
+            android:backgroundTint="@color/orange_checkit"
+            android:text="bouton 1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.249"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <Button
+            android:id="@+id/b2"
+            android:layout_width="114dp"
+            android:layout_height="85dp"
+            android:layout_gravity="bottom|end"
+            android:layout_marginBottom="152dp"
+            android:backgroundTint="@color/orange_checkit"
+            android:text="bouton 2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.595"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="SpeakableTextPresentCheck" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

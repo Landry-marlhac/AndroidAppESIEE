@@ -9,12 +9,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.androidappesiee.CheckitToday;
+import com.example.androidappesiee.NewTask;
 import com.example.androidappesiee.R;
 import com.example.androidappesiee.databinding.FragmentSlideshowBinding;
 
@@ -66,13 +69,21 @@ public class SlideshowFragment extends Fragment {
             }
         });
 
-        /*final TextView textView = binding.textSlideshow;
-        slideshowViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        Button b1 =  root.findViewById(R.id.b1);
+        b1.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
+            public void onClick(View view) {
+               //start activity
             }
-        });*/
+        });
+
+        Button b2 =  root.findViewById(R.id.b2);
+        b2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //start activity
+            }
+        });
         return root;
     }
 

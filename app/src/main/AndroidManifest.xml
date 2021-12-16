@@ -30,6 +30,8 @@
 
             </intent-filter>
         </activity>
+        <activity android:name=".CheckitToday"
+            android:exported="true"></activity>
     </application>
 
 </manifest>
