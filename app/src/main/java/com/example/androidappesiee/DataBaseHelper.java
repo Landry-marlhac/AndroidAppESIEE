@@ -14,18 +14,20 @@ import java.util.List;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
 
+    private static final String DATABASE_NAME = "DatabaseTache.db";
+    private static final int DATBASE_VERSION = 1;
+    private static final String TACHES_TABLE = "TACHES_TABLE";
+    private static final String COLUMN_ID = "ID";
+    private static final String COLUMN_TACHE_NAME = "TACHE_NAME";
+    private static final String COLUMN_TACHE_DESCRIPTION = "TACHE_DESCRIPTION";
+    private static final String COLUMN_TACHE_TYPEDETACHE = "TACHE_TYPEDETACHE";
+    private static final String COLUMN_TACHE_PRIORITE = "TACHE_PRIORITE";
+    private static final String COLUMN_TACHE_EFFECTUEE = "TACHE_EFFECTUEE";
 
-    public static final String TACHES_TABLE = "TACHES_TABLE";
-    public static final String COLUMN_TACHE_NAME = "TACHE_NAME";
-    public static final String COLUMN_TACHE_DESCRIPTION = "TACHE_DESCRIPTION";
-    public static final String COLUMN_TACHE_TYPEDETACHE = "TACHE_TYPEDETACHE";
-    public static final String COLUMN_TACHE_PRIORITE = "TACHE_PRIORITE";
-    public static final String COLUMN_TACHE_EFFECTUEE = "TACHE_EFFECTUEE";
-    public static final String COLUMN_ID = "ID";
     private Context context;
 
     public DataBaseHelper(@Nullable Context context) {
-        super(context, "tachesToDo.db", null, 1);
+        super(context, DATABASE_NAME, null, DATBASE_VERSION);
     }
 
     @Override
@@ -42,11 +44,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean addOne (String nomtache, String description, String typedetache, int priorite){
+    public boolean addTask(String nomtache, String description, String typedetache, int priorite){
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
-
         boolean iseffectuee = new Boolean(false);
 
         cv.put(COLUMN_TACHE_NAME, nomtache);
@@ -58,11 +59,25 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         long insert = db.insert(TACHES_TABLE, null, cv);
 
         if(insert == -1){
+            Toast.makeText(context, "Failed to add task", Toast.LENGTH_SHORT).show();
             return false;
         }else {
+            Toast.makeText(context, "succeed to add task", Toast.LENGTH_SHORT).show();
             return true;
         }
     }
+
+    Cursor readAllData(){
+        String query = "SELECT * FROM "+TACHES_TABLE;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = null;
+        if(db != null){
+            cursor = db.rawQuery(query, null);
+        }
+        return cursor;
+    }
+
+
 
     public Boolean deleteOne (ToDoTacheModel tacheModel){
         //Find customer model in the database. if in database then remove it and return true

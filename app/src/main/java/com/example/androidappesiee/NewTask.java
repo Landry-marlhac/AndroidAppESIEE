@@ -84,13 +84,15 @@ public class NewTask extends AppCompatActivity implements View.OnClickListener, 
             case R.id.btn_enregistrer:
 
                 DataBaseHelper db = new DataBaseHelper(NewTask.this);
-                boolean x = db.addOne(mNomTache.getText().toString(), mDescriptionTache.getText().toString(), typeDeTache, importance );
-
-                if(x){
+                db.addTask(mNomTache.getText().toString().trim(),
+                        mDescriptionTache.getText().toString().trim(),
+                        typeDeTache, importance );
+                //boolean x =
+                /*if(x){
                     Toast.makeText(NewTask.this, "Insert good", Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(NewTask.this, "Insert not good", Toast.LENGTH_SHORT).show();
-                }
+                }*/
 
                 break;
 

@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="@+id/tv_TypeTache" />
 
     <TextView
-        android:id="@+id/tv_NomTAche"
+        android:id="@+id/tv_NomTache"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -37,8 +37,8 @@
         android:text="TextView"
         android:textSize="20sp"
         app:layout_constraintEnd_toStartOf="@+id/Effectuee"
-        app:layout_constraintStart_toEndOf="@+id/tv_NomTAche"
-        app:layout_constraintTop_toTopOf="@+id/tv_NomTAche" />
+        app:layout_constraintStart_toEndOf="@+id/tv_NomTache"
+        app:layout_constraintTop_toTopOf="@+id/tv_NomTache" />
 
     <View
         android:id="@+id/divider"
