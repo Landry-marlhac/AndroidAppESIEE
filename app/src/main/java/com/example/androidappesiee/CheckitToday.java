@@ -5,6 +5,8 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -30,6 +32,9 @@ public class CheckitToday extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     CustomAdapter mCustomAdapter;
 
+    ImageView iv_emptyData;
+    TextView tv_emptyData;
+
     private Button retour_home;
 
     DataBaseHelper db;
@@ -46,6 +51,10 @@ public class CheckitToday extends AppCompatActivity {
 
 
         mRecyclerView = findViewById(R.id.recyclerToDoView);
+
+        iv_emptyData = findViewById(R.id.iv_emptyDatabase);
+        tv_emptyData = findViewById(R.id.tv_emptyDatabase);
+
 
         db = new DataBaseHelper(CheckitToday.this);
         tache_id = new ArrayList<>();
@@ -85,7 +94,11 @@ public class CheckitToday extends AppCompatActivity {
         Cursor cursor = db.readAllData();
         if (cursor.getCount() == 0) {
             Toast.makeText(CheckitToday.this, "No Data in database", Toast.LENGTH_SHORT).show();
+            iv_emptyData.setVisibility(View.VISIBLE);
+            tv_emptyData.setVisibility(View.VISIBLE);
         } else {
+            iv_emptyData.setVisibility(View.GONE);
+            tv_emptyData.setVisibility(View.GONE);
             while (cursor.moveToNext()) {
                 tache_id.add(cursor.getString(0));
                 tache_nom.add(cursor.getString(1));
