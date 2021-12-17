@@ -10,6 +10,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class NewTask extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
@@ -34,6 +35,7 @@ public class NewTask extends AppCompatActivity implements View.OnClickListener, 
 
         mNomTache = findViewById(R.id.editNomTache);
         mPasimportant = findViewById(R.id.importance1);
+        mPasimportant.setChecked(true);
         mPasimportant.setOnClickListener(this::onClick);
         mImportant = findViewById(R.id.importance2);
         mImportant.setOnClickListener(this::onClick);
@@ -86,6 +88,7 @@ public class NewTask extends AppCompatActivity implements View.OnClickListener, 
                         mDescriptionTache.getText().toString().trim(),
                         typeDeTache, importance);
                 Intent intentcheck = new Intent(NewTask.this, CheckitToday.class);
+                finish();
 
                 break;
 
