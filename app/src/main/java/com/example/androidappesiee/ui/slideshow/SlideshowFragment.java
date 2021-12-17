@@ -1,6 +1,7 @@
 package com.example.androidappesiee.ui.slideshow;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,12 +30,17 @@ public class SlideshowFragment extends Fragment {
     private FragmentSlideshowBinding binding;
     private ImageView pub;
     private int nbr_pub;
+    private SharedPreferences pref;
+    private SharedPreferences.Editor editor;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         slideshowViewModel = new ViewModelProvider(this).get(SlideshowViewModel.class);
         binding = FragmentSlideshowBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
+        pref = getContext().getSharedPreferences("MyPref", 0);
+        editor = pref.edit();
 
         pub = (ImageView) root.findViewById(R.id.constraint_pub);
 
@@ -59,11 +65,26 @@ public class SlideshowFragment extends Fragment {
         pub.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v)
             {
+                int times = pref.getInt("key_name", 0);
+                editor.putInt("key_name", times+1);
+                editor.apply();
+
+                //changer les condition lafnverijkvbaerjkvberijkvbrivjbaeriujbertuijrtn
+                Toast.makeText(getContext(), "Vous avez vu :", Toast.LENGTH_LONG).show();
+                if (times % 5 == 0) {
+                    Toast.makeText(getContext(), "Felicitation voici de l'argent !", Toast.LENGTH_LONG).show();
+                }else{
+                    //affichage nombre de pub visioné
+                    //Toast.makeText(getContext(), "Vous avez vu :" + times + "pub", Toast.LENGTH_SHORT).show();
+                }
+
                 if (nbr_pub==0){
                     Uri uri = Uri.parse("https://www.esiee.fr/");
                     Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                     startActivity(intent);
-                }else{
+                }
+
+                if(nbr_pub==1){
                     Uri uri = Uri.parse("http://demineur.hugames.fr/#level-1");
                     Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                     startActivity(intent);
