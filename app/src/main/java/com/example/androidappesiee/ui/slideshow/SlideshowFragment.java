@@ -92,23 +92,6 @@ public class SlideshowFragment extends Fragment {
             }
         });
 
-        Button b1 =  root.findViewById(R.id.b1);
-        b1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-               //start activity
-                Toast.makeText(getActivity(), "bouton1", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        Button b2 =  root.findViewById(R.id.b2);
-        b2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //start activity
-                Toast.makeText(getActivity(), "bouton2", Toast.LENGTH_SHORT).show();
-            }
-        });
 
         Button contactez_nous =  root.findViewById(R.id.btn_mail);
         contactez_nous.setOnClickListener(new View.OnClickListener() {
