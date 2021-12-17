@@ -51,6 +51,7 @@ public class CheckitToday extends AppCompatActivity {
 
 
         mRecyclerView = findViewById(R.id.recyclerToDoView);
+        findViewById(android.R.id.content).invalidate();
 
         iv_emptyData = findViewById(R.id.iv_emptyDatabase);
         tv_emptyData = findViewById(R.id.tv_emptyDatabase);
