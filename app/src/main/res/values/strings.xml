@@ -1,6 +1,6 @@
 <resources>
     //modifier le nom pour simplement "Check\'it"
-    <string name="app_name">aaCheck\'it</string>
+    <string name="app_name">Check\'it</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Check\'it</string>

@@ -50,7 +50,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="A tres vite, la Check\'it"
+        android:text="A très vite, la Check\'it team"
         android:textColor="@color/black"
         android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
