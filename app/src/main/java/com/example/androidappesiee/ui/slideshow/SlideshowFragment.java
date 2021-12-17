@@ -11,12 +11,15 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.androidappesiee.CheckitToday;
+import com.example.androidappesiee.MainActivity;
+import com.example.androidappesiee.NewMail;
 import com.example.androidappesiee.NewTask;
 import com.example.androidappesiee.R;
 import com.example.androidappesiee.databinding.FragmentSlideshowBinding;
@@ -27,14 +30,11 @@ public class SlideshowFragment extends Fragment {
     private ImageView pub;
     private int nbr_pub;
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        slideshowViewModel =
-                new ViewModelProvider(this).get(SlideshowViewModel.class);
 
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        slideshowViewModel = new ViewModelProvider(this).get(SlideshowViewModel.class);
         binding = FragmentSlideshowBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-
 
         pub = (ImageView) root.findViewById(R.id.constraint_pub);
 
@@ -43,14 +43,17 @@ public class SlideshowFragment extends Fragment {
         if (rand > 0.5) {
             pub.setImageResource(R.drawable.pub_1);
             nbr_pub=0;
+
             Animation animation = AnimationUtils.loadAnimation(this.getContext(), R.anim.enter_from_bottom);
             pub.startAnimation(animation);
         } else {
             pub.setImageResource(R.drawable.pub_2);
             nbr_pub=1;
+
             Animation animation = AnimationUtils.loadAnimation(this.getContext(), R.anim.enter_from_bottom);
             pub.startAnimation(animation);
         }
+
 
         // S'occupe de détécter le clique sur l'image et de lancer l'instance du nav internet
         pub.setOnClickListener(new View.OnClickListener() {
@@ -74,6 +77,7 @@ public class SlideshowFragment extends Fragment {
             @Override
             public void onClick(View view) {
                //start activity
+                Toast.makeText(getActivity(), "bouton1", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -82,10 +86,23 @@ public class SlideshowFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 //start activity
+                Toast.makeText(getActivity(), "bouton2", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        Button contactez_nous =  root.findViewById(R.id.btn_mail);
+        contactez_nous.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //start activity
+                Toast.makeText(getActivity(), "bouton mail", Toast.LENGTH_SHORT).show();
+                Intent newmailIntent = new Intent(getActivity(), NewMail.class);
+                startActivity(newmailIntent);
             }
         });
         return root;
     }
+
 
     @Override
     public void onDestroyView() {
