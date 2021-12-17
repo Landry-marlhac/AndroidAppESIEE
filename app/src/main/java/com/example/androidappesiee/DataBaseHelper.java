@@ -23,7 +23,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     private Context context;
 
-    DataBaseHelper(@Nullable Context context) {
+    public DataBaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATBASE_VERSION);
     }
 
@@ -102,7 +102,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    void deleteAllData(){
+    public void deleteAllData(){
         /*How to use it ?
           DataBaseHelper db = new DataBaseHelper(YourActicity.this);
           db.deleteAllData();

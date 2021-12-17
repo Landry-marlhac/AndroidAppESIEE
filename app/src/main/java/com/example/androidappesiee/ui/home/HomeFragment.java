@@ -1,5 +1,7 @@
 package com.example.androidappesiee.ui.home;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -16,13 +18,17 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.androidappesiee.CheckitToday;
+import com.example.androidappesiee.DataBaseHelper;
+import com.example.androidappesiee.MainActivity;
 import com.example.androidappesiee.NewTask;
 import com.example.androidappesiee.R;
+import com.example.androidappesiee.UpdateActivity;
 import com.example.androidappesiee.databinding.FragmentHomeBinding;
 import com.example.androidappesiee.ui.home.HomeViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -35,6 +41,7 @@ public class HomeFragment extends Fragment {
     private int nbr_pub;
     private SharedPreferences pref;
     private SharedPreferences.Editor editor;
+    Context mContext;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -64,7 +71,16 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        Button deleteAllButton = root.findViewById(R.id.tran);
+        deleteAllButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                confirmDialog();
+            }
+        });
 
+
+        mContext = getContext();
 
 //Affichage des pub, incrémentation du nombre de clic sur la pub, toast a 5 pub cliqué DEBUT
         pref = getContext().getSharedPreferences("MyPref", 0);
@@ -119,6 +135,27 @@ public class HomeFragment extends Fragment {
 //Affichage des pub, incrémentation du nombre de clic sur la pub, toast a 5 pub cliqué FIN
 
         return root;
+    }
+
+    void confirmDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+        builder.setTitle("Delete All tasks ?");
+        builder.setMessage("Are you sure you want to delete all tasks ?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                DataBaseHelper db = new DataBaseHelper(mContext);
+                db.deleteAllData();
+
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        builder.create().show();
     }
 
     @Override
