@@ -69,8 +69,7 @@ public class SlideshowFragment extends Fragment {
                 editor.putInt("key_name", times+1);
                 editor.apply();
 
-                //changer les condition lafnverijkvbaerjkvberijkvbrivjbaeriujbertuijrtn
-                Toast.makeText(getContext(), "Vous avez vu :", Toast.LENGTH_LONG).show();
+                //Toast.makeText(getContext(), "Vous avez vu :", Toast.LENGTH_LONG).show();
                 if (times % 5 == 0) {
                     Toast.makeText(getContext(), "Felicitation voici de l'argent !", Toast.LENGTH_LONG).show();
                 }else{
