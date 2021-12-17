@@ -97,7 +97,6 @@ public class SlideshowFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 //start activity
-                Toast.makeText(getActivity(), "bouton mail", Toast.LENGTH_SHORT).show();
                 Intent newmailIntent = new Intent(getActivity(), NewMail.class);
                 startActivity(newmailIntent);
             }

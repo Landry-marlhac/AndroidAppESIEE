@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -85,8 +86,9 @@ public class NewTask extends AppCompatActivity implements View.OnClickListener, 
                 db.addTask(mNomTache.getText().toString().trim(),
                         mDescriptionTache.getText().toString().trim(),
                         typeDeTache, importance);
+                Toast.makeText(NewTask.this, "Tâche enregistrée", Toast.LENGTH_LONG).show();
                 Intent intentcheck = new Intent(NewTask.this, CheckitToday.class);
-
+                startActivity(intentcheck);
                 break;
 
         }

@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,10 +26,11 @@ import java.util.ArrayList;
 public class CheckitToday extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
-    private ActivityMainBinding binding;
 
     private RecyclerView mRecyclerView;
     CustomAdapter mCustomAdapter;
+
+    private Button retour_home;
 
     DataBaseHelper db;
     ArrayList<String> tache_id, tache_nom, tache_description, tache_type, tache_priorite, tache_isdone;
@@ -66,6 +68,17 @@ public class CheckitToday extends AppCompatActivity {
         mRecyclerView.setAdapter(mCustomAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(CheckitToday.this));
 
+        retour_home = (Button) findViewById(R.id.retour_home);
+        retour_home.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+
+                Intent intent_retour = new Intent(CheckitToday.this, MainActivity.class);
+                startActivity(intent_retour);
+
+            }
+
+        });
+
     }
 
     void storeDataInArrays() {
@@ -83,6 +96,7 @@ public class CheckitToday extends AppCompatActivity {
             }
         }
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
