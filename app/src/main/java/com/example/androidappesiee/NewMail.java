@@ -54,6 +54,8 @@ public class NewMail extends AppCompatActivity {
 
             }
         });
+
+
         retour_home = (Button) findViewById(R.id.btn_retour_home);
         retour_home.setOnClickListener(new View.OnClickListener() {
         public void onClick(View view) {
