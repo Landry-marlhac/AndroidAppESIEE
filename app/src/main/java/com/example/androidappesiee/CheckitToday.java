@@ -66,7 +66,7 @@ public class CheckitToday extends AppCompatActivity {
 
         storeDataInArrays();
 
-        mCustomAdapter = new CustomAdapter(CheckitToday.this,
+        mCustomAdapter = new CustomAdapter(CheckitToday.this,CheckitToday.this,
                 tache_id,
                 tache_nom,
                 tache_description,
@@ -83,6 +83,7 @@ public class CheckitToday extends AppCompatActivity {
 
                 Intent intent_retour = new Intent(CheckitToday.this, MainActivity.class);
                 startActivity(intent_retour);
+                finish();
 
             }
 

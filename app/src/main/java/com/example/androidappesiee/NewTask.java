@@ -91,6 +91,7 @@ public class NewTask extends AppCompatActivity implements View.OnClickListener, 
                 Toast.makeText(NewTask.this, "Tâche enregistrée", Toast.LENGTH_LONG).show();
                 Intent intentcheck = new Intent(NewTask.this, CheckitToday.class);
                 startActivity(intentcheck);
+                finish();
                 break;
 
         }

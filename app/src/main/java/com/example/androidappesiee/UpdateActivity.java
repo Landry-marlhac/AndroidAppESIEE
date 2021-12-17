@@ -98,6 +98,9 @@ public class UpdateActivity extends AppCompatActivity implements View.OnClickLis
                 db.updateData(mNomTacheUpdate.getText().toString().trim(),
                         mDescriptionTacheUpdate.getText().toString().trim(),
                         typeDeTacheUpdate, importanceUpdate,false, id);
+                Intent checkitIntent = new Intent(this, CheckitToday.class);
+                startActivity(checkitIntent);
+                finish();
                 break;
 
             case R.id.btn_delete:
@@ -108,6 +111,7 @@ public class UpdateActivity extends AppCompatActivity implements View.OnClickLis
 
         }
     }
+
 
     void getAndSetIntentData(){
         if (getIntent().hasExtra("id") &&
@@ -190,7 +194,10 @@ public class UpdateActivity extends AppCompatActivity implements View.OnClickLis
             public void onClick(DialogInterface dialog, int which) {
                 DataBaseHelper db = new DataBaseHelper(UpdateActivity.this);
                 db.deleteOne(id);
+                Intent checkitIntent = new Intent(UpdateActivity.this, CheckitToday.class);
+                startActivity(checkitIntent);
                 finish();
+
             }
         });
         builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
