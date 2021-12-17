@@ -70,19 +70,26 @@ public class SlideshowFragment extends Fragment {
                 editor.apply();
 
                 //changer les condition lafnverijkvbaerjkvberijkvbrivjbaeriujbertuijrtn
-                if (times % 10 == 0) {
-                    Toast.makeText(getContext(), "Felicitation voici de l'argent !" + times, Toast.LENGTH_LONG).show();
-                } else {
-                    if (nbr_pub==0){
-                        Uri uri = Uri.parse("https://www.esiee.fr/");
-                        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                        startActivity(intent);
-                    }else{
-                        Uri uri = Uri.parse("http://demineur.hugames.fr/#level-1");
-                        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                        startActivity(intent);
-                    }
+                Toast.makeText(getContext(), "Vous avez vu :", Toast.LENGTH_LONG).show();
+                if (times % 5 == 0) {
+                    Toast.makeText(getContext(), "Felicitation voici de l'argent !", Toast.LENGTH_LONG).show();
+                }else{
+                    //affichage nombre de pub visioné
+                    //Toast.makeText(getContext(), "Vous avez vu :" + times + "pub", Toast.LENGTH_SHORT).show();
                 }
+
+                if (nbr_pub==0){
+                    Uri uri = Uri.parse("https://www.esiee.fr/");
+                    Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                    startActivity(intent);
+                }
+
+                if(nbr_pub==1){
+                    Uri uri = Uri.parse("http://demineur.hugames.fr/#level-1");
+                    Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                    startActivity(intent);
+                }
+
             }
         });
 
