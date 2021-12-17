@@ -39,12 +39,12 @@ public class SlideshowFragment extends Fragment {
         binding = FragmentSlideshowBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+//Affichage des pub, incrémentation du nombre de clic sur la pub, toast a 5 pub cliqué DEBUT
         pref = getContext().getSharedPreferences("MyPref", 0);
         editor = pref.edit();
-
         pub = (ImageView) root.findViewById(R.id.constraint_pub);
 
-        // Affichage random de la pub
+        // Affichage une des pub de manière aléatoire
         double rand = Math.random();
         if (rand > 0.5) {
             pub.setImageResource(R.drawable.pub_1);
@@ -59,9 +59,8 @@ public class SlideshowFragment extends Fragment {
             Animation animation = AnimationUtils.loadAnimation(this.getContext(), R.anim.enter_from_bottom);
             pub.startAnimation(animation);
         }
-
-
-        // S'occupe de détécter le clique sur l'image et de lancer l'instance du nav internet
+        // S'occupe d'afficher et détécter le clique sur l'image (pub) et de lancer l'instance du nav internet
+        // Permet d'afficher un toast quand on a cliquer 5 fois sur la pub
         pub.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v)
             {
@@ -88,9 +87,9 @@ public class SlideshowFragment extends Fragment {
                     Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                     startActivity(intent);
                 }
-
             }
         });
+//Affichage des pub, incrémentation du nombre de clic sur la pub, toast a 5 pub cliqué FIN
 
         Button b1 =  root.findViewById(R.id.b1);
         b1.setOnClickListener(new View.OnClickListener() {
