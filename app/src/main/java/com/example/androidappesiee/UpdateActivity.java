@@ -168,8 +168,6 @@ public class UpdateActivity extends AppCompatActivity implements View.OnClickLis
                     break;
 
             }
-
-
         } else {
             Toast.makeText(UpdateActivity.this, "No data transmitted", Toast.LENGTH_SHORT).show();
         }
@@ -208,108 +206,4 @@ public class UpdateActivity extends AppCompatActivity implements View.OnClickLis
         });
         builder.create().show();
     }
-
-    /*A rajouter dans la partie du programme qui gère le delete all
-
-        void confirmDialog(){
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Delete All tasks ?");
-        builder.setMessage("Are you sure you want to delete all tasks ?");
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                DataBaseHelper db = new DataBaseHelper(UpdateActivity.this);
-                db.deleteAllData();
-                finish();
-            }
-        });
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-            }
-        });
-        builder.create().show();
-    }
-
-     */
-
-
-
-/*
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_task);
-
-        mNomTache = findViewById(R.id.editNomTache);
-        mPasimportant = findViewById(R.id.importance1);
-        mPasimportant.setOnClickListener(this::onClick);
-        mImportant = findViewById(R.id.importance2);
-        mImportant.setOnClickListener(this::onClick);
-        mTresimportant = findViewById(R.id.importance3);
-        mTresimportant.setOnClickListener(this::onClick);
-        mDescriptionTache = findViewById(R.id.editDescription);
-        mEnregistrer = findViewById(R.id.btn_enregistrer);
-        mEnregistrer.setOnClickListener(this::onClick);
-        mSpinnerTypeDeTache = (Spinner) findViewById(R.id.spinnerTypeDeTache);
-
-
-        // Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.type_tache_liste, android.R.layout.simple_spinner_item);
-        // Specify the layout to use when the list of choices appears
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // Apply the adapter to the spinner
-        mSpinnerTypeDeTache.setAdapter(adapter);
-        mSpinnerTypeDeTache.setOnItemSelectedListener(this);
-
-
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-
-            case R.id.importance1:
-                mImportant.setChecked(false);
-                mTresimportant.setChecked(false);
-                importance = 0;
-                break;
-
-            case R.id.importance2:
-                mPasimportant.setChecked(false);
-                mTresimportant.setChecked(false);
-                importance = 1;
-                break;
-
-            case R.id.importance3:
-                mImportant.setChecked(false);
-                mPasimportant.setChecked(false);
-                importance = 2;
-                break;
-
-            case R.id.btn_enregistrer:
-
-                DataBaseHelper db = new DataBaseHelper(NewTask.this);
-                db.addTask(mNomTache.getText().toString().trim(),
-                        mDescriptionTache.getText().toString().trim(),
-                        typeDeTache, importance);
-                break;
-
-        }
-    }
-
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-        typeDeTache = parent.getItemAtPosition(position).toString();
-
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
-    }*/
-
 }

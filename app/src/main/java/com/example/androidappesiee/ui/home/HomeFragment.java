@@ -13,25 +13,18 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.androidappesiee.CheckitToday;
 import com.example.androidappesiee.DataBaseHelper;
-import com.example.androidappesiee.MainActivity;
 import com.example.androidappesiee.NewTask;
 import com.example.androidappesiee.R;
-import com.example.androidappesiee.UpdateActivity;
 import com.example.androidappesiee.databinding.FragmentHomeBinding;
-import com.example.androidappesiee.ui.home.HomeViewModel;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class HomeFragment extends Fragment {
 

@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -20,8 +19,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_TACHE_TYPEDETACHE = "TACHE_TYPEDETACHE";
     private static final String COLUMN_TACHE_PRIORITE = "TACHE_PRIORITE";
     private static final String COLUMN_TACHE_EFFECTUEE = "TACHE_EFFECTUEE";
-
-    private Context context;
 
     public DataBaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATBASE_VERSION);
@@ -56,10 +53,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         long insert = db.insert(TACHES_TABLE, null, cv);
 
         if (insert == -1) {
-            //Toast.makeText(context, "Failed to add task", Toast.LENGTH_SHORT).show();
             return false;
         } else {
-            //Toast.makeText(context, "succeed to add task", Toast.LENGTH_SHORT).show();
             return true;
         }
     }
@@ -88,7 +83,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         int result = db.update(TACHES_TABLE, cv,"id=?",new String[]{row_id});
         if (result == -1){
-            //Toast.makeText(context, "Failed to update", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -106,28 +100,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         /*How to use it ?
           DataBaseHelper db = new DataBaseHelper(YourActicity.this);
           db.deleteAllData();
-
          */
 
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL("DELETE FROM "+TACHES_TABLE);
     }
-
-            /*
-    public Boolean deleteOne(ToDoTacheModel tacheModel) {
-        //Find customer model in the database. if in database then remove it and return true
-        //if not find, return false
-        SQLiteDatabase db = this.getWritableDatabase();
-        String queryString = "DELETE FROM " + TACHES_TABLE + " WHERE " + COLUMN_ID + " = " + tacheModel.getID();
-
-
-        Cursor cursor = db.rawQuery(queryString, null);
-        if (cursor.moveToFirst()) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-*/
-
 }

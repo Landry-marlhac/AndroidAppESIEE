@@ -8,11 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.example.androidappesiee.ui.home.HomeFragment;
 
 public class NewMail extends AppCompatActivity {
 
@@ -46,12 +43,8 @@ public class NewMail extends AppCompatActivity {
                 try {
                     startActivity(Intent.createChooser(i, "Envoyez votre message avec ..."));
                 } catch (ActivityNotFoundException ex) {
-                    //Toast.makeText(getActivity(), "Impossible d'envoyer un email", Toast.LENGTH_SHORT).show();
+
                 }
-
-                //Intent intent_retour = new Intent(NewMail.this, MainActivity.class);
-                //startActivity(intent_retour);
-
             }
         });
 

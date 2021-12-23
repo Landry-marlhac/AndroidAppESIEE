@@ -11,7 +11,6 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -19,9 +18,6 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.androidappesiee.databinding.ActivityMainBinding;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 
@@ -48,8 +44,6 @@ public class CheckitToday extends AppCompatActivity {
 
 
         //Appel de l'activity NewTask quand bouton appuyé
-
-
         mRecyclerView = findViewById(R.id.recyclerToDoView);
         findViewById(android.R.id.content).invalidate();
 
@@ -87,9 +81,7 @@ public class CheckitToday extends AppCompatActivity {
                 finish();
 
             }
-
         });
-
     }
 
     void storeDataInArrays() {
@@ -125,10 +117,6 @@ public class CheckitToday extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
-    }
-
-    void ToastMessage(String message) {
-        Toast.makeText(CheckitToday.this, "" + message, Toast.LENGTH_SHORT).show();
     }
 
 }
