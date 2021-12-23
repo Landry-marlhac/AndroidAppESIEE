@@ -59,10 +59,12 @@ public class NewTask extends AppCompatActivity implements View.OnClickListener, 
 
     }
 
+    //On gère les clicks de l'utilisateur
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
 
+            //On permet a l'utilsateur de ne selectionner qu'une seule priorité
             case R.id.importance1:
                 mImportant.setChecked(false);
                 mTresimportant.setChecked(false);

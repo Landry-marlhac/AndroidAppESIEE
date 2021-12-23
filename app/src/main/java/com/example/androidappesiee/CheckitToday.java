@@ -84,13 +84,16 @@ public class CheckitToday extends AppCompatActivity {
         });
     }
 
+    //Récupération des données de la database
     void storeDataInArrays() {
         Cursor cursor = db.readAllData();
         if (cursor.getCount() == 0) {
+            //Si il n'y a pas de donée, on affiche une certain logo
             Toast.makeText(CheckitToday.this, "No Data in database", Toast.LENGTH_SHORT).show();
             iv_emptyData.setVisibility(View.VISIBLE);
             tv_emptyData.setVisibility(View.VISIBLE);
         } else {
+            //Sinon, on n'affiche pas les logos, et on rempli la liste des taches exixtantes
             iv_emptyData.setVisibility(View.GONE);
             tv_emptyData.setVisibility(View.GONE);
             while (cursor.moveToNext()) {

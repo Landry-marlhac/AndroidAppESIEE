@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+//Classe pour gerer la base de données en SQLite
 public class DataBaseHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "DatabaseTache.db";
@@ -24,6 +25,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, DATBASE_VERSION);
     }
 
+    //Création base de données
     @Override
     public void onCreate(SQLiteDatabase db) {
 
@@ -38,6 +40,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    //fonction pour ajouter une tache a la base de donnée
     public boolean addTask(String nomtache, String description, String typedetache, int priorite) {
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -59,6 +62,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    //Fonction pour lire les données
     Cursor readAllData() {
         String query = "SELECT * FROM " + TACHES_TABLE;
         SQLiteDatabase db = this.getReadableDatabase();
@@ -69,6 +73,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
+    //mise a jour de la base de donnée
     void updateData(String tache_name, String tache_descr, String tache_type,
                     int tache_prio, Boolean tache_isdone, String row_id){
 
@@ -86,6 +91,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    //Supprimer une tache de la base de donnée
     public void deleteOne(String row_id){
         SQLiteDatabase db = this.getWritableDatabase();
         long result = db.delete(TACHES_TABLE, "id=?", new String[]{row_id});
@@ -96,6 +102,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    //Supprimer l'entièretée des données
     public void deleteAllData(){
         /*How to use it ?
           DataBaseHelper db = new DataBaseHelper(YourActicity.this);

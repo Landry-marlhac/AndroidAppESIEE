@@ -1,5 +1,6 @@
 package com.example.androidappesiee;
 
+//Classe objet pour les taches avec tous les attributs utiles et qui le seront pour des améliorations
 public class ToDoTacheModel {
 
     private int ID;
