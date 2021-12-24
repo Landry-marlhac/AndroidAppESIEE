@@ -15,6 +15,10 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.androidappesiee.R;
 import com.example.androidappesiee.databinding.FragmentGalleryBinding;
 
+/*
+Activity qui gère le Fragment Galley, notre page Check'it Fast
+ */
+
 public class GalleryFragment extends Fragment {
 
     private GalleryViewModel galleryViewModel;

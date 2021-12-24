@@ -26,6 +26,10 @@ import com.example.androidappesiee.NewTask;
 import com.example.androidappesiee.R;
 import com.example.androidappesiee.databinding.FragmentHomeBinding;
 
+/*
+Activity qui gère le Fragment Home, notre page d'acceuil
+ */
+
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
@@ -46,6 +50,7 @@ public class HomeFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_home,container,false);
 
+        //Lance l'activity NewTask quand le bouton "Ajouter une tâche" est appuyé
         Button addbouton =  root.findViewById(R.id.addbutton);
         addbouton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,6 +60,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        //Lance l'activity CheckitToday quand le bouton "Voir ma To Do List" est appuyé
         Button readbouton =  root.findViewById(R.id.readbutton);
         readbouton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,6 +70,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        //Fait apparaître la boîte de dialogue quand le bouton "Supprimer les tâches" est appuyé
         Button deleteAllButton = root.findViewById(R.id.tran);
         deleteAllButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,7 +82,7 @@ public class HomeFragment extends Fragment {
 
         mContext = getContext();
 
-//Affichage des pub, incrémentation du nombre de clic sur la pub, toast a 5 pub cliqué DEBUT
+        //Affichage des pub, incrémentation du nombre de clic sur la pub, toast a 5 pub cliqué DEBUT
         pref = getContext().getSharedPreferences("MyPref", 0);
         editor = pref.edit();
         pub = (ImageView) root.findViewById(R.id.constraint_pub);
@@ -95,6 +102,7 @@ public class HomeFragment extends Fragment {
             Animation animation = AnimationUtils.loadAnimation(this.getContext(), R.anim.enter_from_bottom);
             pub.startAnimation(animation);
         }
+
         // S'occupe d'afficher et détécter le clique sur l'image (pub) et de lancer l'instance du nav internet
         // Permet d'afficher un toast quand on a cliquer 5 fois sur la pub
         pub.setOnClickListener(new View.OnClickListener() {
@@ -125,11 +133,12 @@ public class HomeFragment extends Fragment {
                 }
             }
         });
-//Affichage des pub, incrémentation du nombre de clic sur la pub, toast a 5 pub cliqué FIN
+        //Affichage des pub, incrémentation du nombre de clic sur la pub, toast a 5 pub cliqué FIN
 
         return root;
     }
 
+    //Configuration de la boite de dialogue pour la suppression de la liste de tâches
     void confirmDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
         builder.setTitle("Delete All tasks ?");

@@ -25,6 +25,10 @@ import com.example.androidappesiee.NewTask;
 import com.example.androidappesiee.R;
 import com.example.androidappesiee.databinding.FragmentSlideshowBinding;
 
+/*
+Activity qui gère le Fragment Slideshow, la page More about Check'it team
+ */
+
 public class SlideshowFragment extends Fragment {
     private SlideshowViewModel slideshowViewModel;
     private FragmentSlideshowBinding binding;

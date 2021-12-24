@@ -21,6 +21,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+/*
+Activity qui nous permet d'afficher la liste des tâches enregistrées par l'utilisateur
+ */
 public class CheckitToday extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
@@ -41,9 +44,6 @@ public class CheckitToday extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_checkittoday);
-
-
-        //Appel de l'activity NewTask quand bouton appuyé
         mRecyclerView = findViewById(R.id.recyclerToDoView);
         findViewById(android.R.id.content).invalidate();
 
@@ -72,6 +72,7 @@ public class CheckitToday extends AppCompatActivity {
         mRecyclerView.setAdapter(mCustomAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(CheckitToday.this));
 
+        //Appel de l'activity main quand le bouton retour est appuyé
         retour_home = (Button) findViewById(R.id.retour_home);
         retour_home.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {

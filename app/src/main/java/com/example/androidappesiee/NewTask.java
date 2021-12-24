@@ -13,6 +13,10 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+/*
+Activity qui permet à l'utilisateur d'enregistrer une nouvelle tâche
+ */
+
 public class NewTask extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
     //Objet de notre layout
@@ -83,6 +87,7 @@ public class NewTask extends AppCompatActivity implements View.OnClickListener, 
                 importance = 2;
                 break;
 
+            //Enregistrement de la tâche quand le bouton enregistrer est appuyé
             case R.id.btn_enregistrer:
 
                 DataBaseHelper db = new DataBaseHelper(NewTask.this);

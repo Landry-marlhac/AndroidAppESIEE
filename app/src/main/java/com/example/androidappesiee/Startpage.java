@@ -11,6 +11,7 @@ import android.view.WindowManager;
 public class Startpage extends AppCompatActivity {
 
 
+    //Gestion de l'animation de la page de lancement de l'appli
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,6 +20,7 @@ public class Startpage extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_startpage);
 
+        //Appel l'activity main après 1500ms
         new Handler().postDelayed(() -> {
             Intent i = new Intent(Startpage.this, MainActivity.class);
             startActivity(i);
