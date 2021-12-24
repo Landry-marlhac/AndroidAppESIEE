@@ -43,7 +43,7 @@ public class SlideshowFragment extends Fragment {
         binding = FragmentSlideshowBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-//Affichage des pub, incrémentation du nombre de clic sur la pub, toast a 5 pub cliqué DEBUT
+        //Affichage des pub, incrémentation du nombre de clic sur la pub, toast a 5 pub cliqué DEBUT
         pref = getContext().getSharedPreferences("MyPref", 0);
         editor = pref.edit();
         pub = (ImageView) root.findViewById(R.id.constraint_pub);
@@ -72,7 +72,10 @@ public class SlideshowFragment extends Fragment {
                 editor.putInt("key_name", times+1);
                 editor.apply();
 
+                //Affichage du nombre de pub lancé
                 //Toast.makeText(getContext(), "Vous avez vu :", Toast.LENGTH_LONG).show();
+
+                //Tout les 5pubs on affiche un gain d'argent
                 if (times % 5 == 0) {
                     Toast.makeText(getContext(), "Felicitation voici de l'argent !", Toast.LENGTH_LONG).show();
                 }else{
@@ -80,6 +83,7 @@ public class SlideshowFragment extends Fragment {
                     //Toast.makeText(getContext(), "Vous avez vu :" + times + "pub", Toast.LENGTH_SHORT).show();
                 }
 
+                //choix de l'url pour la pub en fonction de l'image affiché
                 if (nbr_pub==0){
                     Uri uri = Uri.parse("https://www.esiee.fr/");
                     Intent intent = new Intent(Intent.ACTION_VIEW, uri);

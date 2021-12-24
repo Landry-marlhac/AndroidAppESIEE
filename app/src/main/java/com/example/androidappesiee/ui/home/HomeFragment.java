@@ -87,6 +87,7 @@ public class HomeFragment extends Fragment {
         editor = pref.edit();
         pub = (ImageView) root.findViewById(R.id.constraint_pub);
 
+        // On utilise le même code que pour le fragment slideshow afin d'afficher et compter les pub
         // Affichage une des pub de manière aléatoire
         double rand = Math.random();
         if (rand > 0.5) {
@@ -113,13 +114,15 @@ public class HomeFragment extends Fragment {
                 editor.apply();
 
                 //Toast.makeText(getContext(), "Vous avez vu :", Toast.LENGTH_LONG).show();
+                // Affichage nombre de pub cliqué et tout les 5pub, gain d'argent
                 if (times % 5 == 0) {
                     Toast.makeText(getContext(), "Felicitation voici de l'argent !", Toast.LENGTH_LONG).show();
                 }else{
-                    //affichage nombre de pub visioné
+                    //affichage nombre de pub cliqué
                     //Toast.makeText(getContext(), "Vous avez vu :" + times + "pub", Toast.LENGTH_SHORT).show();
                 }
 
+                //choix url
                 if (nbr_pub==0){
                     Uri uri = Uri.parse("https://www.esiee.fr/");
                     Intent intent = new Intent(Intent.ACTION_VIEW, uri);

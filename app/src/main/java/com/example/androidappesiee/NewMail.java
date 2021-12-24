@@ -20,7 +20,7 @@ public class NewMail extends AppCompatActivity {
     private SharedPreferences pref;
     private SharedPreferences.Editor editor;
 
-
+    //Class permettant d'afficher la page de remplissage du mail
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +29,10 @@ public class NewMail extends AppCompatActivity {
 
         pref = getSharedPreferences("MyPref", 0);
         editor = pref.edit();
+
+        //Lors de l'appuis sur le bouton send email, on récupère le text de l'objet et du message,
+        //pour le préremplir dans le mail. On ajoute nos mail pro pour le contact
+        //On utilise le intent de partage par mail de base d'android
 
         sendEmail = (Button) findViewById(R.id.btn_mail);
         sendEmail.setOnClickListener(new View.OnClickListener() {
@@ -48,7 +52,7 @@ public class NewMail extends AppCompatActivity {
             }
         });
 
-
+        //Bouton sur le menu home
         retour_home = (Button) findViewById(R.id.btn_retour_home);
         retour_home.setOnClickListener(new View.OnClickListener() {
         public void onClick(View view) {
